@@ -4,6 +4,7 @@
 
 def convertToPostfix(infix):
     
+    """ This is the Shunting Yard Alorgithim for converting from infix to postfix"""
     # pick any number but pick a higher number for the * as
     # it has higher precidence
     # specials is a dictionary
@@ -174,11 +175,37 @@ def match(infix, string):
 
     # Check it the accept state is in the set of current states.
     return (nfa.accept in current)
-infixes = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c", "(a.b)|(c*.d)"]
-strings = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+
+#infixes1 = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c", "(a.b)|(c*.d)"]
+#strings1 = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+
+#print(infixes1)
 
 #have it so the user gets a choice of whether they have a infix, or postfix 
 #and what they want to do with it
 
-for i in infixes:
-    print(convertToPostfix(i))
+# for i in infixes1:
+    #for s in strings1:
+#     print(match(i, s), i, s)
+
+numOfInfixes = int(input("How many infixes would you like to parse to postfix?"))
+
+count, count2 = 1, 1
+infixes, strings = [], []
+
+while numOfInfixes > 0:
+    infix = input("Enter infix : ")
+    infixes.append(infix)
+    count+=1
+    numOfInfixes-= 1
+
+print(infixes)
+
+numOfStrings = int(input("How many strings do you want to use for the matching algorithm?"))
+
+while numOfStrings > 0:
+    string = input("Enter the string: ")
+    strings.append(string)
+    numOfStrings-= 1
+
+print(strings)
