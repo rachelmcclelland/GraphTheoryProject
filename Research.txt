@@ -1,0 +1,10 @@
+SHUNTING  YARD ALGORITHM
+https://brilliant.org/wiki/shunting-yard-algorithm/
+This algorithm was invented by Edsger Dijkstra. It is used for parsing mathematical expressions.
+It uses the use of stacks to rearrange the operators and operands into the correct for for evaluation.
+The procedure used is as follows:
+    ->Expressions are parsed from the left side to the right side
+    ->Each time a number or an operator is read, it is pushed to the stacks
+    ->If an operator comes up, we pop the required operands from the stack, perform the operations, 
+    and push the result back to the stack.
+    ->We are finished when the string is empty 
