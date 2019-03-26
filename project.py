@@ -195,6 +195,7 @@ infixes, strings = [], []
 
 while numOfInfixes > 0:
     infix = input("Enter infix : ")
+    infix = infix.replace(" ", "")
     infixes.append(infix)
     count+=1
     numOfInfixes-= 1
