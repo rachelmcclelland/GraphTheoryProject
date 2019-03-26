@@ -13,7 +13,7 @@ def convertToPostfix(infix):
     pofix = ""
     stack = ""
 
-    # Loop through the string a charactet at a time
+    # Loop through the string a character at a time
     for c in infix:
         # If an open bracekt, push to the stack
         if c == '(':
@@ -31,12 +31,12 @@ def convertToPostfix(infix):
             while stack and specials.get(c, 0) <= specials.get(stack[-1], 0):
                 pofix, stack = pofix + stack[-1], stack[:-1]
             stack = stack + c
-        # Regular characters are pushed immediatelt to the output
+        # Regular characters are pushed immediately to the output
         else:
             # if not any of above. take character and put into pofix
             pofix = pofix + c
      # if there is anything else left on the stack at the end
-     #push all that onto the profix
+     #push all that onto the pofix
     while  stack: 
         pofix, stack = pofix + stack[-1], stack[:-1] # same code as above, just looks different
     return pofix
