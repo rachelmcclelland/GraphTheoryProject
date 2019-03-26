@@ -3,11 +3,9 @@
 #G00337231
 
 def convertToPostfix(infix):
-    
     """ This is the Shunting Yard Alorgithim for converting from infix to postfix"""
-    # pick any number but pick a higher number for the * as
-    # it has higher precidence
-    # specials is a dictionary
+
+    # Dictionary
     specials = {'*': 50, '.': 40, '|': 30, '+': 20 } 
 
     pofix = ""
@@ -15,7 +13,7 @@ def convertToPostfix(infix):
 
     # Loop through the string a character at a time
     for c in infix:
-        # If an open bracekt, push to the stack
+        # If an open bracket, push to the stack
         if c == '(':
             stack = stack + c
         # If a closing bracket, pop from the stack, push to output until open bracket
@@ -33,12 +31,11 @@ def convertToPostfix(infix):
             stack = stack + c
         # Regular characters are pushed immediately to the output
         else:
-            # if not any of above. take character and put into pofix
+            # Take the character and put into pofix
             pofix = pofix + c
-     # if there is anything else left on the stack at the end
-     #push all that onto the pofix
+     # if there is anything else left on the stack at the end, push all that onto the pofix
     while  stack: 
-        pofix, stack = pofix + stack[-1], stack[:-1] # same code as above, just looks different
+        pofix, stack = pofix + stack[-1], stack[:-1]
     return pofix
 
 # Represents a state with the two arrows, labelled by label.
@@ -53,9 +50,8 @@ class nfa:
     initial = None
     accept = None
 
-    # Constructor for nfa class
+    # Constructor for nfa class, Represents the currrent instance of the class
     # Must include an initial argument to a class 'self'
-    # Represents the currrent instance of the class
     def __init__(self, initial, accept):
         self.initial = initial
         self.accept = accept
@@ -70,7 +66,7 @@ def compileToNFA(pofix):
             nfa2 = nfastack.pop() # take last element out of the array and return into nfa2
             nfa1 = nfastack.pop() # originally the first thing that was put onto the stack
             
-            # Connect first NFA's accpet state to the second's intial
+            # Connect first NFA's accept state to the second's intial
             nfa1.accept.edge1 = nfa2.initial
 
             # Push NFA to the stack
@@ -87,7 +83,7 @@ def compileToNFA(pofix):
             initial.edge1 = nfa1.initial
             initial.edge2 = nfa2.initial
 
-            # Create a new accept state, connectin the accept states of the two 
+            # Create a new accept state, connecting the accept states of the two 
             # NFA's popped from the stack, to the new state
             accept = state()
             nfa1.accept.edge1 = accept
@@ -99,7 +95,7 @@ def compileToNFA(pofix):
             # Pop a single NFA from the stack
             nfa1 = nfastack.pop()
 
-            # Create new initial and accpet states
+            # Create new initial and accept states
             initial, accept= state(), state()
 
             # Join the new initial state to nfa1's inital state and the new accept state
@@ -113,12 +109,12 @@ def compileToNFA(pofix):
             # Push the new NFA to the stack
             nfastack.append(nfa(initial, accept))          
         else:    
-            # Create new initial and accept states
-            accept = state() # create a new state for the accept state
-            initial = state() # create a new state for the initial state
+            # Create a new state for both initial and accept states
+            accept = state()
+            initial = state()
 
             # Join the initial state to the accept state using an arrow labelled c
-            initial.label = c # the arrow labeled by the characted
+            initial.label = c # the arrow labeled by the character
             initial.edge1 = accept # point edge1 to the accept state
 
             # Push new NFA to the stack
