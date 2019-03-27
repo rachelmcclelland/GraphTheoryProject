@@ -1,6 +1,7 @@
 # Graph Theory Project 2019.
-#Rachel McClelland
-#G00337231
+# Rachel McClelland
+# G00337231
+# This project references the video lectures that are moodle by Ian McLoughlin.
 
 def convertToPostfix(infix):
     """ This is the Shunting Yard Alorgithim for converting from infix to postfix"""
@@ -107,7 +108,19 @@ def compileToNFA(pofix):
             nfa1.accept.edge2 = accept
 
             # Push the new NFA to the stack
-            nfastack.append(nfa(initial, accept))          
+            nfastack.append(nfa(initial, accept))      
+        elif c == '+':
+            #Pop one NFA of the stack
+            nfa1 = nfastack.pop()
+
+            initial, accept = state(), state()
+
+            initial.edge1 = nfa1.initial
+            initial.edge2 = accept
+
+            nfa1.accept.edge1 = nfa.initial
+            nfa1.accept.edge2 = accept
+
         else:    
             # Create a new state for both initial and accept states
             accept = state()
@@ -175,15 +188,6 @@ def match(infix, string):
 #infixes1 = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c", "(a.b)|(c*.d)"]
 #strings1 = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
 
-#print(infixes1)
-
-#have it so the user gets a choice of whether they have a infix, or postfix 
-#and what they want to do with it
-
-# for i in infixes1:
-    #for s in strings1:
-#     print(match(i, s), i, s)
-
 numOfInfixes = int(input("How many infixes would you like to parse to postfix?"))
 
 count, count2 = 1, 1
@@ -206,3 +210,8 @@ while numOfStrings > 0:
     numOfStrings-= 1
 
 print(strings)
+
+for i in infixes:
+    for s in strings:
+        print(match(i, s), i, s)
+
