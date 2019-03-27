@@ -8,3 +8,11 @@ The procedure used is as follows:
     ->If an operator comes up, we pop the required operands from the stack, perform the operations, 
     and push the result back to the stack.
     ->We are finished when the string is empty 
+
+THOMPSONS CONSTRUCTION
+https://swtch.com/~rsc/regexp/regexp1.html
+This website helped me figure out how to add the + operator into the compileToNFA function.
+
+https://www.cs.york.ac.uk/fp/lsa/lectures/REToC.pdf
+    -> This link is for detailed lecture notoes on Thompsons construction. It uses a step by guide on
+    how the alogorithm is used and it is also easy to follow
