@@ -104,7 +104,7 @@ def compileToNFA(pofix):
             initial.edge2 = accept
 
             # Join the old accept state to the new accept state and nfa1's initial state
-            nfa1.accept.edge1 = nfa.initial
+            nfa1.accept.edge1 = nfa1.initial
             nfa1.accept.edge2 = accept
 
             # Push the new NFA to the stack
@@ -118,8 +118,9 @@ def compileToNFA(pofix):
             initial.edge1 = nfa1.initial
             initial.edge2 = accept
 
-            nfa1.accept.edge1 = nfa.initial
+            nfa1.accept.edge1 = nfa1.initial
             nfa1.accept.edge2 = accept
+
 
         else:    
             # Create a new state for both initial and accept states
@@ -185,33 +186,33 @@ def match(infix, string):
     # Check it the accept state is in the set of current states.
     return (nfa.accept in current)
 
-#infixes1 = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c", "(a.b)|(c*.d)"]
-#strings1 = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
+infixes1 = ["a.b.c*", "a.(b|d).c*", "(a.(b|d))*", "a.(b.b)*.c", "(a.b)|(c*.d)"]
+strings1 = ["", "abc", "abbc", "abcc", "abad", "abbbc"]
 
-numOfInfixes = int(input("How many infixes would you like to parse to postfix?"))
+# numOfInfixes = int(input("How many infixes would you like to parse to postfix?"))
 
-count, count2 = 1, 1
-infixes, strings = [], []
+# count, count2 = 1, 1
+# infixes, strings = [], []
 
-while numOfInfixes > 0:
-    infix = input("Enter infix : ")
-    infix = infix.replace(" ", "")
-    infixes.append(infix)
-    count+=1
-    numOfInfixes-= 1
+# while numOfInfixes > 0:
+#     infix = input("Enter infix : ")
+#     infix = infix.replace(" ", "")
+#     infixes.append(infix)
+#     count+=1
+#     numOfInfixes-= 1
 
-print(infixes)
+# print(infixes)
 
-numOfStrings = int(input("How many strings do you want to use for the matching algorithm?"))
+# numOfStrings = int(input("How many strings do you want to use for the matching algorithm?"))
 
-while numOfStrings > 0:
-    string = input("Enter the string: ")
-    strings.append(string)
-    numOfStrings-= 1
+# while numOfStrings > 0:
+#     string = input("Enter the string: ")
+#     strings.append(string)
+#     numOfStrings-= 1
 
-print(strings)
+# print(strings)
 
-for i in infixes:
-    for s in strings:
+for i in infixes1:
+    for s in strings1:
         print(match(i, s), i, s)
 
