@@ -7,7 +7,7 @@ def convertToPostfix(infix):
     """ This is the Shunting Yard Alorgithim for converting from infix to postfix"""
 
     # Dictionary
-    specials = {'*': 50, '.': 40, '|': 30, '+': 20 } 
+    specials = {'*': 50, '.': 40, '|': 30, '?':30, '+': 20 } 
 
     pofix = ""
     stack = ""
@@ -37,6 +37,7 @@ def convertToPostfix(infix):
      # if there is anything else left on the stack at the end, push all that onto the pofix
     while  stack: 
         pofix, stack = pofix + stack[-1], stack[:-1]
+    print(pofix)
     return pofix
 
 # Represents a state with the two arrows, labelled by label.
