@@ -128,21 +128,13 @@ def compileToNFA(pofix):
             #pop a single NFA of the stack
             nfa1 = nfastack.pop()
 
-            # initial, accept = state(), state()
-
-            # initial.edge1 = nfa1.initial
-            # initial.edge2 = accept
-
-            # nfa1.accept.edge1 = nfa1.initial
-            # nfa1.accept.edge2 = accept
-
             initial = state()
             initial.edge1 = nfa1.initial
 
             accept = state()
             nfa1.accept.edge1 = accept
             initial.edge2 = accept
-            
+
             nfastack.append(nfa(initial, accept))
         else:    
             # Create a new state for both initial and accept states
