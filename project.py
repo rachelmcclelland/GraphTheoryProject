@@ -114,8 +114,10 @@ def compileToNFA(pofix):
             #Pop one NFA of the stack
             nfa1 = nfastack.pop()
 
+            # new inital and accept states
             initial, accept = state(), state()
 
+            #joins the new inital state to the NFA's inital state
             initial.edge1 = nfa1.initial
             initial.edge2 = accept
 
