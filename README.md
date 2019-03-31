@@ -9,15 +9,19 @@ The procedure used is as follows:
     and push the result back to the stack.
     ->We are finished when the string is empty 
 
+https://www.quora.com/What-is-the-shunting-yard-algorithm
+This website explains what the shunting algorithm does and how it works.
+
 THOMPSONS CONSTRUCTION
 https://en.wikipedia.org/wiki/Thompson%27s_construction
 The first link I got when I googled Thompsons construction was for the Wikipedia page.
 It has a very detailed description of what this algorithm is and how it can be used. Wikipedia says that
 Thompson's construction is a method of transforming a regular expression into an equivalent 
 nondeterministic finite automaton (NFA). It says that this NFA can then be used to match strings against
-the regular expression and that this algorithm is credited to Ken Thompson
+the regular expression and that this algorithm is credited to Ken Thompson.
+
 https://swtch.com/~rsc/regexp/regexp1.html
-This website helped me figure out how to add the + operator into the compileToNFA function.
+This website helped me figure out how to add the + operator and the ? operator into the compileToNFA function.
 
 https://www.cs.york.ac.uk/fp/lsa/lectures/REToC.pdf
     -> This links has detailed lecture notes on Thompsons construction. It uses a step by guide on
