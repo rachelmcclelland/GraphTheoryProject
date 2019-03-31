@@ -37,7 +37,6 @@ def convertToPostfix(infix):
      # if there is anything else left on the stack at the end, push all that onto the pofix
     while  stack: 
         pofix, stack = pofix + stack[-1], stack[:-1]
-    print(pofix)
     return pofix
 
 # Represents a state with the two arrows, labelled by label.
@@ -217,7 +216,7 @@ while numOfInfixes > 0:
     count+=1
     numOfInfixes-= 1
 
-print(infixes)
+#print(infixes)
 
 numOfStrings = int(input("How many strings do you want to use for the matching algorithm?"))
 
@@ -226,7 +225,7 @@ while numOfStrings > 0:
     strings.append(string)
     numOfStrings-= 1
 
-print(strings)
+#print(strings)
 
 for i in infixes:
     for s in strings:
